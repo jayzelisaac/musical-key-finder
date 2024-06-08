@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import IPython.display as ipd
 import librosa
 import librosa.display
 
@@ -85,6 +84,7 @@ class Tonal_Fragment(object):
     
     # prints a chromagram of the file, showing the intensity of each pitch class over time
     def chromagram(self, title=None):
+        sr = self.sr
         C = librosa.feature.chroma_cqt(y=self.waveform, sr=sr, bins_per_octave=24)
         plt.figure(figsize=(12,4))
         librosa.display.specshow(C, sr=sr, x_axis='time', y_axis='chroma', vmin=0, vmax=1)
